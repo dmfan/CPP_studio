@@ -3,6 +3,7 @@
  */
 
 #include <iostream>
+#include <stdlib.h>
 using namespace std;
 
 //
@@ -14,20 +15,21 @@ class Student {
   float score;
   //
   void say() {
-    cout << name << "鐨勫勾榫勬槸" << age << "锛屾垚缁╂槸" << score << endl;
+    cout << name << "的名字是" << age << "年龄是" << score << endl;
   }
 };
 
 int main() {
   //
   Student stu;
-  stu.name = "灏忔槑";
+  stu.name = "小明";
   stu.age = 15;
   stu.score = 98.0f;
   stu.say();
 
   Student *Pstu = &stu;  //
-  Pstu->name = "灏忎寒";
+  Pstu->name = "小亮";
 
+  system("pause");
   return 0;
 }
