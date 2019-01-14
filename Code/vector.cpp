@@ -1,7 +1,5 @@
 /* 
-展示控制流 cin  
-程序功能：求多个数和
-while(std::cin >> value)循环的结束条件
+基本内置类型 转义字符\
 */
 #include<iostream>
 #include<stdlib.h>
@@ -13,13 +11,17 @@ using namespace std;
 
 int main(){
     int sum = 0, value = 0;
-    std::cout << "Please input some number: ";
-    while(std::cin >> value)
-    {
-        sum += value;
-        std::cout << "you input result:" << sum << std::endl;
-    }
-    std::cout << "Sum is : " << sum << std::endl;
+    std::cout << "Please input some "
+    "number: \n";
+    std::cout << "Please input some "
+    "number \115 : \12";
+    std::cout << "Please input some "
+    "number \1159 : \12";//ISO Latin-1字符集 \115('M')
+
+    std::cout << "Please input some "
+    "number \x123 : \12";
+    std::cout << "Please input some "
+    "number \x1234 : \12";
 
 system("pause");
 return 0;
