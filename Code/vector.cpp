@@ -1,5 +1,7 @@
-/* ç¨‹åºåˆ›å»ºä¸¤ä¸ªvectorå¯¹è±¡ï¼Œä¸€ä¸ªæ˜¯intè§„èŒƒï¼Œä¸€ä¸ªæ˜¯stringè§„èŒƒ
-åŒæ—¶æ·±åˆ»æ­ç¤ºäº†getlineçš„ç”¨æ³•
+/* 
+Õ¹Ê¾¿ØÖÆÁ÷ cin  
+³ÌĞò¹¦ÄÜ£ºÇó¶à¸öÊıºÍ
+while(std::cin >> value)Ñ­»·µÄ½áÊøÌõ¼ş
 */
 #include<iostream>
 #include<stdlib.h>
@@ -11,6 +13,7 @@ using namespace std;
 
 int main(){
     int sum = 0, value = 0;
+    std::cout << "Please input some number: ";
     while(std::cin >> value)
     {
         sum += value;
