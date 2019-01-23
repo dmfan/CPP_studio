@@ -1,29 +1,63 @@
-/* STL string 
-常见的 string 类构造函数 创建string对象
+/* STL 
+�������vector< bool>��for(auto i : c)����i���ı䣬Ҳ��Ӱ�쵽c�� 
+��std::vector<float>ʹ��for(auto i : c)�򲻻ᡣ
 */
 //http://c.biancheng.net/stl/string/
 
 #include<iostream>
 #include<stdlib.h>
-using namespace std;
+
+#include <array>
+#include <vector>
+
 int main(){
 
-string str("abcdefg");
-char ch[] = "33333";
-string a;//定义一个空字符串
-string str_1(str);//构造函数，全部复制
-string str_2(str,2,5);//构造函数，从字符串str的第2个元素开始，复制5个元素，赋值给str_2
-string str_3(ch,5);//构造函数，将字符串ch的前5个元素赋值给str_3
-string str_4(5,'X');//构造函数，将5个'X'组成的字符串"XXXXX"赋值给str_4
-string str_5(str.begin(), str.end());//构造函数，复制字符串str的所有元素，并赋值给str_5
+    double total {};
+    double mm=0,nn=0;
 
-cout << str << endl;
-cout << a << endl ;
-cout << str_1 << endl;
-cout << str_2 << endl;
-cout << str_3 << endl;
-cout << str_4 << endl;
-cout << str_5 << endl;
+  std::array<double, 10> values {0.5, 1.0, 1.5, 2.0};
+  std::vector<float> c{0.5, 1.0, 1.5, 2.0};
+  std::vector<bool> cc{ false, true, false, true, false };
+
+
+
+    for(auto&& value : values)
+        total += value;
+    for(auto&& value : values)
+    {
+        value = mm;
+        mm += 1;
+    }
+    std::cout << "-----" << std::endl;
+    nn=0;
+    for(auto& value : c)//�ı� c ��������
+    {
+        value = mm;
+        std::cout << c.at(nn) << std::endl;
+        mm += 1;
+        nn += 1;
+    }
+    std::cout << "-----" << std::endl;
+    nn=0;
+    for(auto&& value : c)//�ı� c ��������
+    {
+        value = mm;
+        std::cout << c.at(nn) << std::endl;
+        mm += 1;
+        nn += 1;
+    }
+    std::cout << "-----" << std::endl;
+    nn=0;
+    for(auto value : c)//���ı� c ��������
+    {
+        std::cout << c.at(nn) << std::endl;
+        value = mm;
+        std::cout << c.at(nn) << std::endl;
+        mm += 1;
+        nn += 1;
+    }
+    
+    
 
 system("pause");
 return 0;
