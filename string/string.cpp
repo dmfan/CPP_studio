@@ -1,41 +1,71 @@
 /* STL 
-c++中的c_str()函数
-string、const char*、 char* 、char[]相互转换
-参考：https://blog.csdn.net/yunhaic/article/details/80042047
+array容器
+参考：C++11变量初始化 https://www.jb51.net/article/126232.htm
 */
 
 
-#include<iostream>
-#include<stdlib.h>
+#include <iostream> // For standard streams
+#include <iomanip>  // For stream manipulators
+#include <array>    // For array<T,N>
+int main()
+{
+    const unsigned int min_wt{100U};//U表示无符号类型 C++11变量初始化为100U
+    const unsigned int max_wt {250U};//U表示无符号类型 C++11变量初始化为100U
+    const unsigned int wt_step {10U};
+    const size_t wt_count {1 + (max_wt - min_wt) / wt_step};
 
+    const unsigned int min_ht {48U};
+    const unsigned int max_ht {84U};
+    const unsigned int ht_step {2U};
+    const size_t ht_count { 1 + (max_ht - min_ht) / ht_step };
 
-using namespace std;
+    const double lbs_per_kg {2.20462};
+    const double ins_per_m {39.3701};
 
+    std::array<unsigned int, wt_count> weight_lbs;//定义数组容器
+    std::array<unsigned int, ht_count> height_ins;
 
-int main(){
+    // Create weights from lOOlbs in steps of lOlbs
+    for (size_t i{}, w{min_wt} ; i < wt_count ; w += wt_step, ++i)// i 初始化为0 ， w 初始化为100
+    {
+        weight_lbs.at(i) = w;
+    }
 
-    char c_str[] = "hello world!";
-    char* c = nullptr;//初始化char*类型，并赋值为空
-    const char* constc = nullptr;//初始化const char*类型，并赋值为空
-    string info_extend = "Hello World!";
-
-    //string类型转const char*类型
-    constc = info_extend.c_str();
-
-    cout << "c_str:" << c_str << endl;
-    cout << "constc:" << constc << endl;
-    cout << "string:" << info_extend.c_str() << endl;
-
-    //const char*类型转char*类型     string转换为char*要先转换为const char*再转换为char *
-    c = const_cast<char*>(constc);
-    cout << "c:" << c << endl;
-
-    //string类型转char[]类型
-    for (int i = 0; i < info_extend.length(); i++) //string类型转char[]类型
-        c_str[i]=info_extend[i];
-    cout << "c_str:" << c_str << endl;
-    
-
-system("pause");
-return 0;
+    //Create heights from 48 inches in steps of 2 inches
+    unsigned int h{min_ht};
+    for(auto& height : height_ins)
+    {
+        height = h;
+        h += ht_step;
+    }
+    //Output table headings
+    std::cout << std:: setw (7) <<" |";
+    for (const auto& w : weight_lbs)
+        std::cout << std:: setw (5) << w<<"11";
+    std::cout << std::endl;
+    // Output line below headings
+    for (size_t i{1} ; i < wt_count ; ++i)
+        std::cout<<"---------";
+    std::cout << std::endl;
+    double bmi {};
+    unsigned int feet {};
+    unsigned int inches {};
+    const unsigned int inches_per_foot {12U};
+    for (const auto& h : height_ins)
+    {
+        feet = h / inches_per_foot;
+        inches = h % inches_per_foot;
+        std::cout << std::setw (2) <<feet <<"'"<<std::setw (2) << inches <<"\""<<"|";
+        std::cout << std::fixed <<std::setprecision(1);
+        for (const auto& w : weight_lbs)
+        {
+            bmi = h / ins_per_m;
+            bmi = (w / lbs_per_kg) / (bmi*bmi);
+            std::cout << std:: setw (2) <<""<<bmi <<" |";
+        }
+        std::cout << std::endl;
+    }
+    for (size_t i {1} ; i < wt_count ; ++i)
+        std::cout << "---------";
+    std::cout << "\nBMI from 18.5 to 24.9 is normal" << std::endl;
 }
