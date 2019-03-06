@@ -6,22 +6,15 @@
 #include <iostream> // For standard streams
 #include <iomanip>  // For stream manipulators
 #include <array>    // For array<T,N>
+#include <vector>
+
 int main()
 {
-    const unsigned int min_ht {48U};
-    const unsigned int max_ht {84U};
-    const unsigned int ht_step {2U};
-    const size_t ht_count { 1 + (max_ht - min_ht) / ht_step };
-    std::array<unsigned int, ht_count> height_ins;
-
-    unsigned int h {min_ht};
-    auto first = height_ins.begin();//返回height_ins的迭代器
-    auto last = height_ins.end () ;//返回height_ins的迭代器
-
-    while (first != last)//如果相等表示遍历完成！
-    {
-        *first++=h;     //初始值 min_ht
-        h += ht_step;   //递增ht_step
-    }
+    std::array<std :: string, 5> words {"one", "two","three", "four", "five"};
+    
+    // std::vector<std::string> words_copy {"ooo" , "cdcd", "doso"};
+    std::vector<std::string> words_copy {std::begin(words) , std::end(words)};//可以用元素类印相同的容器来初始化 vector<T> 容器。用一对迭代器来指定初始值的范围。
+    std::cout << words_copy[0] << std::endl << words_copy[2] ;
+    std::cout<<"end";
 
 }
