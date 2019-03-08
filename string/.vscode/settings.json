@@ -29,6 +29,9 @@
         "typeinfo": "cpp",
         "utility": "cpp",
         "ctime": "cpp",
-        "iomanip": "cpp"
+        "iomanip": "cpp",
+        "cmath": "cpp",
+        "deque": "cpp",
+        "numeric": "cpp"
     }
 }
