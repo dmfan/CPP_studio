@@ -1,6 +1,7 @@
 /* STL 
 
-deque??
+list??
+??????
 */
 
 
@@ -9,26 +10,22 @@ deque??
 #include <algorithm> // For copy()
 #include <iterator> // std::istream_iterator is declared in the <iterator> header file
 #include <string>
-#include <deque>
+#include <list>
+
 
 int main()
 {
-    std::deque<std::string> names {"1A1A"};
+   std::list<std::string> words;
+   std::list<std::string> sayings {20}; // A list of 20 empty strings
+   std::list<double> values(50, 3.1415926); //??????????? {50? 3.1415926} ????????
+   std::list<double> save_values {values};  //save_values ? values ????
+   std::list<double> sample_values {++values.cbegin(), --values.cend()};  //sample_values ?values????????49?????
+                                                                          //??std::list<double> samples {++cbegin(values), --cend(values)};???vscode?
 
-    std::deque<std::string> words {"one","none","some","all","none","most","many"};
+    for(const auto name : sample_values)
+    std::cout << name << std::endl;
+    printf("sample_values.size():%d",sample_values.size());
 
-    std::deque<std::string> words_copy {words};// Makes a copy of the words container
-
-    std::deque<std::string> words_part {std::begin(words),std::end(words)-2};
-
-    std::cout << words.at(2) << std::endl; // Output the third element in words
-    std::cout << words.at(0) << std::endl; // Output the third element in words
-
-    //Example
-    std::cout << "Enter first names separated by spaces. Enter Ctrl+Z on a new line to end:\n";
-    std::copy(std::istream_iterator < std::string > {std::cin}, std::istream_iterator < std::string > {}, std::front_inserter(names));//copy() ???????????????????????????????????????? Ctrl+Z ????????????????
-    std::cout << "\nIn reverse order, the names you entered are:\n";
-    std::copy(std::begin(names), std::end(names), std::ostream_iterator < std::string > {std::cout, "  "});
-    std::cout << std::endl;
+    printf("end!");
 
 }
