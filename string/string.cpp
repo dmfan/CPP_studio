@@ -1,7 +1,11 @@
 /* STL 
 
 list??
-???????
+
+????????????SensorModule *???list???????????????????????????????
+?????list?????front()?????????back()???????????????????????
+?????????????set_list(),show_list()????????
+???????set_list()????????????SensorModule?????????????????????SensorModule??????????
 */
 
 
@@ -13,27 +17,124 @@ list??
 #include <list>
 
 
+class SensorModule {
+    public:
+    std::string sensorName;
+    uint16_t sensorID;
+    uint16_t startAddr;
+    uint8_t  length;
+
+    void saysay(){
+        std::cout << sensorName << std::endl;
+    }
+};
+
+
+std::list<SensorModule *> sensorsList; 
+std::list<std::string> stringList;
+
+
+void set_list()
+{
+    SensorModule newSensorA,newSensorB,newSensorC,newSensorD,newSensorE;
+
+    newSensorA.sensorName="a";
+    newSensorA.sensorID=1;
+    newSensorA.length=2;
+    newSensorA.startAddr=3;
+
+    newSensorE.sensorName="a";
+    newSensorE.sensorID=1;
+    newSensorE.length=2;
+    newSensorE.startAddr=3;
+
+    newSensorB.sensorName="b";
+    newSensorB.sensorID=4;
+    newSensorB.length=5;
+    newSensorB.startAddr=6;
+
+    newSensorC.sensorName="c";
+    // newSensorC.sensorID=7;
+    newSensorC.length=8;
+    newSensorC.startAddr=9;
+
+    newSensorD.sensorName="d";
+    newSensorD.sensorID=11;
+    newSensorD.length=22;
+    newSensorD.startAddr=33;
+
+    
+    sensorsList.push_back(&newSensorA);
+    sensorsList.push_back(&newSensorB);
+    sensorsList.push_back(&newSensorC);
+    sensorsList.push_back(&newSensorD);
+
+}
+void show_list()
+{
+    // for(const auto name : sensorsList)
+    // std::cout << name->sensorName << std::endl;
+
+    SensorModule *a1;
+    SensorModule *a2;
+
+    a1 = sensorsList.front();                   // ??
+    std::cout << a1->sensorName << std::endl;
+    a2 = sensorsList.back();
+    std::cout << a2->sensorName << std::endl;
+
+}
+
 int main()
 {
-   std::list<std::string> words {"Jane", "Jim", "Jules", "Janet"};
-   words.push_front("Ian");     // Add string ("Ian") to the front of the list
-   words.push_back("Kitty");    // Append string ("Kitty") to the end of the list
-   //?????????????????????????????????? pushJfront() ? push_back() ?????????????
-   words.emplace_front("Ian");  //Create string ("Ian") in place at the front of the list   
-   words.emplace_back("Kitty"); // Create string ("Kitty") in place at the end of the list
+    // SensorModule newSensorA,newSensorB,newSensorC,newSensorD,newSensorE;
+    
+    // SensorModule *a1;
+    // SensorModule *a2;
 
-   //?????????  insert() ????????????????????????????????
-   words.insert(++begin(words), "May"); // Insert "May" as the second element  
+    // newSensorA.sensorName="a";
+    // newSensorA.sensorID=1;
+    // newSensorA.length=2;
+    // newSensorA.startAddr=3;
 
-   auto iter = begin(words);    //iter ? list<std::string>::iterator ??
-   std::advance(iter, 9); // Increase iter by 9  ??????9
-   words.insert(iter, 3, "Dmm");// Insert 3 copies of 88 starting at the 10th
+    // newSensorE.sensorName="a";
+    // newSensorE.sensorID=1;
+    // newSensorE.length=2;
+    // newSensorE.startAddr=3;
 
+    // newSensorB.sensorName="b";
+    // newSensorB.sensorID=4;
+    // newSensorB.length=5;
+    // newSensorB.startAddr=6;
 
-    for(const auto name : words)
-    std::cout << name << std::endl;
-    printf("sample_values.size():%d",words.size());
+    // newSensorC.sensorName="c";
+    // // newSensorC.sensorID=7;
+    // newSensorC.length=8;
+    // newSensorC.startAddr=9;
 
+    // newSensorD.sensorName="d";
+    // newSensorD.sensorID=11;
+    // newSensorD.length=22;
+    // newSensorD.startAddr=33;
+
+    
+    // sensorsList.push_back(&newSensorA);
+    // sensorsList.push_back(&newSensorB);
+    // sensorsList.push_back(&newSensorC);
+    // sensorsList.push_back(&newSensorD);
+
+    // for(const auto name : sensorsList)
+    // std::cout << name->sensorName << std::endl;
+
+    // a1 = sensorsList.front();
+    // std::cout << a1->sensorName << std::endl;
+    // a2 = sensorsList.back();
+    // std::cout << a2->sensorName << std::endl;
+
+    set_list();
+    show_list();
+
+    printf("end!");
     printf("end!");
 
 }
